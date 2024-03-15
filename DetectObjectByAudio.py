@@ -20,7 +20,7 @@ model.setInputParams(size=(416, 416), scale=1/255)
 
 # load the classes names and store in a list
 classesNames = []
-df = pd.read_csv("classes.txt", header=None, names=["ClassName"])
+df = pd.read_csv("C:/Users/jalaj/OneDrive/Desktop/VoiceBlind/classes.txt", header=None, names=["ClassName"])
 for index, row in df.iterrows():
     ClassName = df.iloc[index]['ClassName']
     classesNames.append(ClassName)
@@ -144,6 +144,9 @@ while True:
                 speak_detection_message(name, x, y, frame.shape[1], frame.shape[0])
                 detected_flag = True
                 detected_time = time.time()  # Record the time when an object is detected
+
+                # Print the words spoken after object detection
+                print("Words spoken after object detection:", LookForThisClassName)
 
     # Reset the flag after a certain time (7 seconds in this example)
     if detected_flag:
